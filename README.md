@@ -22,7 +22,7 @@ This tutorial shows how to use the CRUD helpers in the BITS stack.
 You need to setup a BITS Base, and be able to communicate with a running instance. If you do not already have a BITS Base running, you can create one by downloading the source and using the development command-line. You should also have a good understanding of how modules are loaded in BITS as well as how to use the message center to add requests and add Listeners.
 
 # <a name="introduction"></a> Intro to Crud+o
-CRUD is an acronym that relates to persistent storage. Many databases follow this acronym as well many ram backed technologies. In BITS. The base provides helper classes that implement the CRUD API. Crud stands for Create Read Update and Delete. The +o has been added recently to also allow for subscribing to changes. In BITS we use CRUD to maintain a list of objects across all modules that need access to that data. The bits crud api implements 6 methods: `create`, `update`, `delete`, `get`, `list`, and `count`. In addition to the api. The subsystem also emits 3 events. `created`, `updated`, and `deleted`.
+CRUD is an acronym that relates to persistent storage. Many databases follow this acronym as well as many ram backed technologies. In BITS. The base provides helper classes that implement the CRUD API. Crud stands for Create Read Update and Delete. The +o has been added recently to also allow for subscribing to changes. In BITS we use CRUD to maintain a list of objects across all modules that need access to that data. The bits crud api implements 6 methods: `create`, `update`, `delete`, `get`, `list`, and `count`. In addition to the api. The subsystem also emits 3 events. `created`, `updated`, and `deleted`.
 
 # <a name="step-1"></a> Step 1: Intro to Crud+o
 For the first tutorial we are going to build a contacts app that stores contacts in ram. First create a contacts subsystem under the lib directory and create a contacts manager that inherits from the CrudManager. His code should look like:
@@ -55,7 +55,7 @@ The next step is to then get the index.js to load this subsystem during its load
 
   class App {
     constructor() {
-      this._contactsManager = new ContactsManager(this);
+      this._contactsManager = new ContactsManager();
     }
     load(messageCenter) {
       return Promise.resolve()
@@ -166,7 +166,7 @@ This code changes the created users phone number. Before continuing make sure yo
 # <a name="step-3"></a> Step 3: Getting CRUD list in the UI
 The next step is to then see this data in the UI.
 
-First create a helper element called tutorial-contacts.html. It should look like:
+First create a helper element called tutorials-contacts.html. It should look like:
 
 ``` html
 <link rel="import" href="../../bower_components/polymer/polymer.html">
