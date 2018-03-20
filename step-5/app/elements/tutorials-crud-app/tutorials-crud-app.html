@@ -14,31 +14,34 @@
    limitations under the License.
  -->
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../tutorials-contacts/tutorials-contacts.html">
 <link rel="import" href="../../bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="../../bower_components/vaadin-grid/vaadin-grid-column.html">
+<link rel="import" href="../tutorials-contacts/tutorials-contacts.html">
 
 <dom-module id="tutorials-crud-app">
   <template>
     <style>
       :host {
         display: block;
+        height: 100%;
+      }
+
+      #grid {
+        height: 100%;
       }
     </style>
+
     <tutorials-contacts id="contacts" items="{{contacts}}"></tutorials-contacts>
 
     <vaadin-grid id="grid" items="[[contacts]]">
-      <table>
-        <colgroup>
-          <col name="name" sortable></col>
-          <col name="phone" sortable></col>
-        </colgroup>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Number</th>
-          </tr>
-        </thead>
-      </table>
+      <vaadin-grid-column>
+        <template class="header">Name</template>
+        <template>[[item.name]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Number</template>
+        <template>[[item.phone]]</template>
+      </vaadin-grid-column>
     </vaadin-grid>
 
   </template>
